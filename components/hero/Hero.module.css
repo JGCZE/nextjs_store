@@ -1,0 +1,25 @@
+.lshape {
+  position: absolute;
+  top: 20px;
+  left: 2vw;
+  width: 96vw;
+  height: 500px;
+  clip-path: polygon(0 100%, 0% 15%, 60% 15%, 65% 0%, 100% 0%, 100% 100%);
+  border-radius: 50px;
+  background-image: linear-gradient(
+    to right top,
+    #e9c6da,
+    #f3ced4,
+    #f7d8d3,
+    #f6e3d7,
+    #f5ede0,
+    #f6eee1,
+    #f7efe3,
+    #f8f0e4,
+    #fbe8de,
+    #fce0dc,
+    #fad8e0,
+    #f0d3e7
+  );
+  z-index: -10;
+}
