@@ -1,17 +1,13 @@
-import Hero from "@/components/hero/Hero";
+import Hero from "@/components/home/Hero";
+import MainSection from "@/components/home/MainSection";
+import SecondarySection from "@/components/home/SecondarySection";
 
 const Home = () => {
   return (
-    <div>
+    <div className="flex flex-col">
       <Hero />
-      <h1 className="text-6xl">Find your</h1>
-      <h1 className="text-6xl">Find your</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus
-        pariatur natus suscipit ratione ipsum. Natus explicabo, veniam deserunt
-        unde, nesciunt reiciendis dolore ad blanditiis quia aliquam quidem quo
-        labore accusantium?
-      </p>
+      <MainSection />
+      <SecondarySection />
     </div>
   );
 };
