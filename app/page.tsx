@@ -2,7 +2,7 @@ import Hero from "@/components/home/Hero";
 import MainSection from "@/components/home/MainSection";
 import SecondarySection from "@/components/home/SecondarySection";
 
-const Home = () => {
+const Home = async () => {
   return (
     <div className="flex flex-col">
       <Hero />
