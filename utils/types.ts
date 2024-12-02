@@ -12,3 +12,9 @@ export type THeroLinks = {
   label: string;
   note?: string;
 };
+
+export type TDiscounts = {
+  href: string;
+  label: string;
+  images: string;
+};
