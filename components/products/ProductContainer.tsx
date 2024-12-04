@@ -17,7 +17,11 @@ const ProductContainer = ({ products }: IProps) => {
   return (
     <div>
       {/* type of layout */}
-      <Filter hello={hello} setFiltredProducts={setFiltredProducts} />
+      <Filter
+        hello={hello}
+        setFiltredProducts={setFiltredProducts}
+        filtredProducts={filtredProducts}
+      />
 
       {/* Dvě kompontny list and grid */}
       {/* Grid product */}
