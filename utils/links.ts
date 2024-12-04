@@ -1,4 +1,27 @@
-import { TDiscounts, THeroLinks } from "./types";
+import { TDiscounts, THeroLinks, TNavLinks } from "./types";
+
+export const navigationLinks: Array<TNavLinks> = [
+  {
+    id: 1,
+    href: "/",
+    label: "Home",
+  },
+  {
+    id: 2,
+    href: "/products",
+    label: "Shop",
+  },
+  {
+    id: 3,
+    href: "/about-us",
+    label: "About",
+  },
+  {
+    id: 4,
+    href: "/contact",
+    label: "Contact",
+  },
+];
 
 export const heroLinks: Array<THeroLinks> = [
   {

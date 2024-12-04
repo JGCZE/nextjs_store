@@ -1,3 +1,9 @@
+export type TNavLinks = {
+  id: number;
+  href: string;
+  label: string;
+};
+
 export type TProducts = {
   _id: string;
   itemName: string;

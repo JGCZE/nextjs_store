@@ -6,7 +6,12 @@ export const getProducts = async () => {
   try {
     connectToDb();
     const response = await Items.find();
-    return response;
+
+    if (response.length === 0) {
+      throw new Error("No featured products found");
+    }
+
+    return { success: response };
   } catch (error) {
     console.log("Error fetching products", error);
     throw new Error("Error fetching products");

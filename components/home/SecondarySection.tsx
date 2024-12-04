@@ -48,7 +48,7 @@ const SecondarySection = async () => {
             <Link href={href} key={index} className="row-span-2 col-span-1">
               <Card className="w-52 mr-8 py-6">
                 <CardContent>
-                  <p className="text-2xl mb-8">{label}</p>
+                  <p className="text-2xl mb-8 font-extrabold">{label}</p>
                   <Image src={images} width={150} height={170} alt="" />
                 </CardContent>
               </Card>

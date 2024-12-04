@@ -5,7 +5,7 @@ const Blog = async () => {
   const response = await getProducts();
 
   return (
-    <div>
+    <section>
       Blog
       {response.map((item) => {
         return (
@@ -14,7 +14,7 @@ const Blog = async () => {
           </div>
         );
       })}
-    </div>
+    </section>
   );
 };
 
