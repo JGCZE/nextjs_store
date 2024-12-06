@@ -12,6 +12,11 @@ section {
   padding-top: 30px;
 }
 
+article {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

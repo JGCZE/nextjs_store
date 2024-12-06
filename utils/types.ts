@@ -6,6 +6,7 @@ export type TNavLinks = {
 
 export type TProducts = {
   _id: string;
+  available?: boolean;
   itemName: string;
   price: number;
   description?: string;

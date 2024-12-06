@@ -8,6 +8,8 @@ const Container = ({
   children: React.ReactNode;
   className?: string;
 }) => {
-  return <div className={cn("mx-auto px-8", className)}>{children}</div>;
+  return (
+    <div className={cn("mx-auto max-w-[1280px]", className)}>{children}</div>
+  );
 };
 export default Container;
