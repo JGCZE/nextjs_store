@@ -6,12 +6,13 @@ export type TNavLinks = {
 
 export type TProducts = {
   _id: string;
-  available?: boolean;
+  available: boolean;
   itemName: string;
   price: number;
   description?: string;
   image: string;
   featured: boolean;
+  reviews?: Array<number>;
 };
 
 export type THeroLinks = {
@@ -24,4 +25,12 @@ export type TDiscounts = {
   href: string;
   label: string;
   images: string;
+};
+
+export type TReview = {
+  body: string;
+  email: string;
+  id: number;
+  name: string;
+  postId: number;
 };

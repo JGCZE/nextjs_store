@@ -3,7 +3,8 @@ import Image from "next/image";
 import React from "react";
 import { Card, CardContent, CardDescription, CardTitle } from "../ui/card";
 import { Button } from "../ui/button";
-import resolveStore from "@/utils/resolvers/resolveStore";
+import Available from "./Available";
+import { FaStar } from "react-icons/fa";
 
 interface IProps {
   filtredProducts: Array<TProducts>;
@@ -13,7 +14,7 @@ const GridProducts = ({ filtredProducts }: IProps) => {
   return (
     <div className="grid 2xl:grid-cols-4 xl:grid-cols-3 grid-cols-2 gap-4">
       {filtredProducts.map((prod) => {
-        const { available, image, price, itemName } = prod;
+        const { available, image, price, itemName, reviews } = prod;
         return (
           <Card key={prod._id} className="max-w-60 hover:shadow-lg">
             <CardContent className="relative h-80 rounded-t-xl overflow-hidden min-w-60 ">
@@ -29,15 +30,14 @@ const GridProducts = ({ filtredProducts }: IProps) => {
                 dolorum. Molestiae sit officia error similique facilis tempora
                 velit. Odit molestiae quisquam itaque quae aliquam.
               </p>
+              <div className="flex mt-2">
+                <FaStar className="text-yellow-400 text-xl" />
+                <span className="ml-2 font-bold">
+                  ( {reviews?.length || "zatím nehodnoceno"} )
+                </span>
+              </div>
               <div className="font-bold text-md mt-2">
-                {available ? (
-                  <span className="flex justify-between">
-                    <p className="text-green-700">skladem</p>
-                    <p>{resolveStore(4)}</p>
-                  </span>
-                ) : (
-                  <p className="text-red-600">nedostupné</p>
-                )}
+                <Available available={available} amount={4} />
               </div>
               <p className="text-black font-extrabold text-lg my-4 flex justify-between">
                 {price} Kč

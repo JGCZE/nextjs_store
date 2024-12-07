@@ -2,9 +2,10 @@ import { TProducts } from "@/utils/types";
 import Image from "next/image";
 import React from "react";
 import { Card, CardContent, CardDescription, CardTitle } from "../ui/card";
-import resolveStore from "@/utils/resolvers/resolveStore";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import Available from "./Available";
+import { FaStar } from "react-icons/fa";
 
 interface IProps {
   filtredProducts: Array<TProducts>;
@@ -14,7 +15,7 @@ const ListProducts = ({ filtredProducts }: IProps) => {
   return (
     <div className="grid xl:grid-cols-2 grid-cols-1 gap-4 px-4">
       {filtredProducts.map((prod) => {
-        const { _id, available, image, price, itemName } = prod;
+        const { _id, available, image, price, itemName, reviews } = prod;
         return (
           <Link href={`/products/${_id}`} key={prod._id}>
             <Card className="flex hover:shadow-lg">
@@ -33,14 +34,13 @@ const ListProducts = ({ filtredProducts }: IProps) => {
                     tempora velit. Odit molestiae quisquam itaque quae aliquam.
                   </p>
                   <div className="font-bold flex flex-col justify-between my-2">
-                    {available ? (
-                      <span className="flex justify-between mt-2">
-                        <p className="text-green-700">skladem</p>
-                        <p>{resolveStore(4)}</p>
-                      </span>
-                    ) : (
-                      <p className="text-red-600">nedostupné</p>
-                    )}
+                    <Available available={available} amount={4} />
+                  </div>
+                  <div className="flex mt-2">
+                    <FaStar className="text-yellow-400 text-xl" />
+                    <span className="ml-2 font-bold">
+                      ( {reviews?.length || "zatím nehodnoceno"} )
+                    </span>
                   </div>
                   <p className="text-black font-extrabold text-lg my-4 flex justify-between">
                     {price} Kč
