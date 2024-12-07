@@ -6,13 +6,15 @@ import ListProducts from "./ListProducts";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import GridProducts from "./GridProducts";
 import { Button } from "../ui/button";
+import useFilter from "@/hooks/useFilter";
 
 interface IProps {
   products: Array<TProducts>;
 }
 
 const ProductContainer = ({ products }: IProps) => {
-  const [filtredProducts, setFiltredProducts] = useState(products);
+  const { allProducts, available, setAvailable, onAvailable } =
+    useFilter(products);
 
   const router = useRouter();
   const pathname = usePathname();
@@ -33,8 +35,9 @@ const ProductContainer = ({ products }: IProps) => {
     <div className="flex">
       <div className="flex flex-col border-r-2 mr-4 border-red-300 mb-10 min-w-80 px-4">
         <Filter
-          setFiltredProducts={setFiltredProducts}
-          filtredProducts={filtredProducts}
+          available={available}
+          setAvailable={setAvailable}
+          onAvailable={onAvailable}
         />
         <div>
           <Button
@@ -56,9 +59,9 @@ const ProductContainer = ({ products }: IProps) => {
 
       <div className="w-full">
         {layoutType === "grid" ? (
-          <GridProducts filtredProducts={filtredProducts} />
+          <GridProducts filtredProducts={allProducts} />
         ) : (
-          <ListProducts filtredProducts={filtredProducts} />
+          <ListProducts filtredProducts={allProducts} />
         )}
       </div>
     </div>
