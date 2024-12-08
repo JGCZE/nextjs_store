@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardTitle } from "../ui/card";
 import { Button } from "../ui/button";
 import Available from "./Available";
 import { FaStar } from "react-icons/fa";
+import { Badge } from "../ui/badge";
 
 interface IProps {
   filtredProducts: Array<TProducts>;
@@ -14,7 +15,7 @@ const GridProducts = ({ filtredProducts }: IProps) => {
   return (
     <div className="grid 2xl:grid-cols-4 xl:grid-cols-3 grid-cols-2 gap-4">
       {filtredProducts.map((prod) => {
-        const { available, image, price, itemName, reviews } = prod;
+        const { available, image, price, itemName, reviews, sizes } = prod;
         return (
           <Card key={prod._id} className="max-w-60 hover:shadow-lg">
             <CardContent className="relative h-80 rounded-t-xl overflow-hidden min-w-60 ">
@@ -24,6 +25,16 @@ const GridProducts = ({ filtredProducts }: IProps) => {
               <div>{itemName}</div>
             </CardTitle>
             <CardDescription className="px-4">
+              <div>
+                <p>Velikosti:</p>
+                {sizes?.map((size, index) => {
+                  return (
+                    <Badge variant="outline" key={index} className="mr-1">
+                      {size}
+                    </Badge>
+                  );
+                })}
+              </div>
               <p>
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                 Voluptatem obcaecati voluptates dolores non repellat autem

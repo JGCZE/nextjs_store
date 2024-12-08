@@ -13,6 +13,7 @@ export type TProducts = {
   image: string;
   featured: boolean;
   reviews?: Array<number>;
+  sizes: Array<string>;
 };
 
 export type THeroLinks = {

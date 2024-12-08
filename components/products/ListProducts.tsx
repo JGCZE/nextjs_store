@@ -6,6 +6,7 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import Available from "./Available";
 import { FaStar } from "react-icons/fa";
+import { Badge } from "../ui/badge";
 
 interface IProps {
   filtredProducts: Array<TProducts>;
@@ -15,7 +16,7 @@ const ListProducts = ({ filtredProducts }: IProps) => {
   return (
     <div className="grid xl:grid-cols-2 grid-cols-1 gap-4 px-4">
       {filtredProducts.map((prod) => {
-        const { _id, available, image, price, itemName, reviews } = prod;
+        const { _id, available, image, price, itemName, reviews, sizes } = prod;
         return (
           <Link href={`/products/${_id}`} key={prod._id}>
             <Card className="flex hover:shadow-lg">
@@ -33,6 +34,17 @@ const ListProducts = ({ filtredProducts }: IProps) => {
                     dolorum. Molestiae sit officia error similique facilis
                     tempora velit. Odit molestiae quisquam itaque quae aliquam.
                   </p>
+                  <div>
+                    <p className="font-bold mt-2">Velikosti:</p>
+                    {!!sizes &&
+                      sizes?.map((size, index) => {
+                        return (
+                          <Badge variant="outline" key={index} className="mr-1">
+                            {size}
+                          </Badge>
+                        );
+                      })}
+                  </div>
                   <div className="font-bold flex flex-col justify-between my-2">
                     <Available available={available} amount={4} />
                   </div>

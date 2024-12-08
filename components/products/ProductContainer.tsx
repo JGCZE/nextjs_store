@@ -1,6 +1,6 @@
 "use client";
 import { TProducts } from "@/utils/types";
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useMemo } from "react";
 import Filter from "./Filter";
 import ListProducts from "./ListProducts";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -13,8 +13,13 @@ interface IProps {
 }
 
 const ProductContainer = ({ products }: IProps) => {
-  const { allProducts, available, setAvailable, onAvailable } =
-    useFilter(products);
+  const {
+    allProducts,
+    available,
+    setAvailable,
+    onAvailable,
+    handleSizeChange,
+  } = useFilter(products);
 
   const router = useRouter();
   const pathname = usePathname();
@@ -38,6 +43,7 @@ const ProductContainer = ({ products }: IProps) => {
           available={available}
           setAvailable={setAvailable}
           onAvailable={onAvailable}
+          handleSizeChange={handleSizeChange}
         />
         <div>
           <Button
