@@ -19,6 +19,7 @@ const ProductContainer = ({ products }: IProps) => {
     setAvailable,
     onAvailable,
     handleSizeChange,
+    handleCategoryChange,
   } = useFilter(products);
 
   const router = useRouter();
@@ -44,6 +45,7 @@ const ProductContainer = ({ products }: IProps) => {
           setAvailable={setAvailable}
           onAvailable={onAvailable}
           handleSizeChange={handleSizeChange}
+          handleCategoryChange={handleCategoryChange}
         />
         <div>
           <Button

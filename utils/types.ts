@@ -7,6 +7,7 @@ export type TNavLinks = {
 export type TProducts = {
   _id: string;
   available: boolean;
+  categoryId: number;
   itemName: string;
   price: number;
   description?: string;
@@ -14,6 +15,11 @@ export type TProducts = {
   featured: boolean;
   reviews?: Array<number>;
   sizes: Array<string>;
+};
+
+export type TCategories = {
+  categoryId: number;
+  category: string;
 };
 
 export type THeroLinks = {

@@ -8,22 +8,29 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "../ui/accordion";
+import { TCategories } from "@/utils/types";
 
 interface IProps {
   available: boolean;
   setAvailable: (arg: boolean) => void;
   onAvailable: () => void;
   handleSizeChange: (arg: string) => void;
+  handleCategoryChange: (arg: number) => void;
 }
 
 const sizes: Array<string> = ["S", "M", "L", "XL"];
-const categories: Array<string> = ["trička", "čepice", "kalhoty"];
+const categories: Array<TCategories> = [
+  { categoryId: 1, category: "trička" },
+  { categoryId: 2, category: "čepice" },
+  { categoryId: 3, category: "kalhoty" },
+];
 
 const Filter = ({
   available,
   setAvailable,
   onAvailable,
   handleSizeChange,
+  handleCategoryChange,
 }: IProps) => {
   return (
     <div className="flex flex-col">
@@ -35,16 +42,20 @@ const Filter = ({
               Kategorie
             </AccordionTrigger>
             <AccordionContent>
-              {categories.map((size, index) => {
+              {categories.map((cat, index) => {
+                const { category, categoryId } = cat;
                 return (
                   <div key={index} className="flex my-4 ">
                     <Checkbox
-                      id={size}
+                      id={category}
                       className="w-6 h-6 mr-4"
-                      onClick={() => {}}
+                      onClick={() => handleCategoryChange(categoryId)}
                     />
-                    <label htmlFor={size} className="font-bold cursor-pointer">
-                      <p>{size}</p>
+                    <label
+                      htmlFor={category}
+                      className="font-bold cursor-pointer"
+                    >
+                      <p>{category}</p>
                     </label>
                   </div>
                 );

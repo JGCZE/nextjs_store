@@ -38,8 +38,6 @@ const GridProducts = ({ filtredProducts }: IProps) => {
               <p>
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                 Voluptatem obcaecati voluptates dolores non repellat autem
-                dolorum. Molestiae sit officia error similique facilis tempora
-                velit. Odit molestiae quisquam itaque quae aliquam.
               </p>
               <div className="flex mt-2">
                 <FaStar className="text-yellow-400 text-xl" />

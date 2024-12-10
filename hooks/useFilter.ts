@@ -8,12 +8,30 @@ interface IReturn {
   setAvailable: (arg: boolean) => void;
   onAvailable: () => void;
   handleSizeChange: (arg: string) => void;
+  handleCategoryChange: (arg: number) => void;
 }
 
 const useFilter = (products: Array<TProducts>): IReturn => {
+  const [allProducts, setFiltredProducts] =
+    useState<Array<TProducts>>(products);
   const [sizes, setSizes] = useState<Array<string | undefined>>([]);
-  const [allProducts, setFiltredProducts] = useState(products);
   const [available, setAvailable] = useState<boolean>(false);
+  const [categoryIds, setCategoryIds] = useState<number>();
+
+  // udělám si centralizovanou funkci, které v sobě bude obsahovat podmíněné volání funkcí
+  // zjednoduším jednotlivé setovací funkce, pouze na add a remove
+  const applyFilters = useCallback(() => {
+    if (onAvailable) {
+    }
+
+    if (handleCategoryChange) {
+    }
+
+    if (handleSizeChange) {
+    }
+  }, [sizes, available, categoryIds]);
+
+  useCallback(() => applyFilters(), [applyFilters]);
 
   const onAvailable = useCallback(() => {
     if (available == false) {
@@ -24,10 +42,19 @@ const useFilter = (products: Array<TProducts>): IReturn => {
     }
   }, [available, products]);
 
+  const handleCategoryChange = (categoryId: number) => {
+    const foundedProducts = products.filter(
+      (item) => item.categoryId === categoryId
+    );
+    console.log(foundedProducts);
+    setFiltredProducts(...allProducts, foundedProducts);
+  };
+
   const handleSizeChange = (sizeString: string) => {
     if (sizes.includes(sizeString)) {
       console.log("INCLUDES");
       const removeSize = sizes.filter((size) => size != sizeString);
+      console.log("removeSize", removeSize);
       const removeClothes = allProducts.filter((prod) =>
         prod.sizes?.includes(!sizeString)
       );
@@ -35,7 +62,7 @@ const useFilter = (products: Array<TProducts>): IReturn => {
       setFiltredProducts(xor(removeClothes));
     } else {
       console.log("SETTING");
-      const findClothesWithSize = products.filter((prod) =>
+      const findClothesWithSize = allProducts.filter((prod) =>
         prod.sizes?.includes(sizeString)
       );
       const findSelectedSizes = findClothesWithSize?.flatMap(
@@ -45,7 +72,6 @@ const useFilter = (products: Array<TProducts>): IReturn => {
       setFiltredProducts(xor(findClothesWithSize));
     }
   };
-  console.log("allProducrs", allProducts);
 
   return {
     allProducts,
@@ -53,6 +79,7 @@ const useFilter = (products: Array<TProducts>): IReturn => {
     setAvailable,
     onAvailable,
     handleSizeChange,
+    handleCategoryChange,
   };
 };
 

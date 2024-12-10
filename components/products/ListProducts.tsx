@@ -31,8 +31,6 @@ const ListProducts = ({ filtredProducts }: IProps) => {
                   <p>
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                     Voluptatem obcaecati voluptates dolores non repellat autem
-                    dolorum. Molestiae sit officia error similique facilis
-                    tempora velit. Odit molestiae quisquam itaque quae aliquam.
                   </p>
                   <div>
                     <p className="font-bold mt-2">Velikosti:</p>
