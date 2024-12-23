@@ -24,7 +24,7 @@ const useFilter = (allProducts: Array<TProducts>): IReturn => {
     let products = [...allProducts];
 
     if (available) {
-      products.filter((prod) => prod.available == true);
+      products = products.filter((prod) => prod.available === available);
     }
 
     if (categoryIds.length > 0) {
@@ -47,7 +47,7 @@ const useFilter = (allProducts: Array<TProducts>): IReturn => {
   }, [applyFilters]);
 
   const onAvailable = () => {
-    setAvailable(() => true);
+    setAvailable(() => !available);
   };
 
   const handleCategoryChange = (selectedCatIds: number) => {
