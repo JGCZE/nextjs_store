@@ -18,7 +18,7 @@ const MainSection = async () => (
       opts={{
         align: "start",
       }}
-      className="w-[650px] mt-12 px-10" // tato hodnota bude určotvat počer kartiček, pak vyřeším responsivitou
+      className="w-[650px] z-1 mt-12 px-10" // tato hodnota bude určotvat počer kartiček, pak vyřeším responsivitou
     >
       <CarouselContent>
         {heroLinks.map((link, index) => (
