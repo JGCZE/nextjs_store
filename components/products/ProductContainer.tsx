@@ -9,18 +9,18 @@ import { Button } from "../ui/button";
 import useFilter from "@/hooks/useFilter";
 
 interface IProps {
-  products: Array<TProducts>;
+  allProducts: Array<TProducts>;
 }
 
-const ProductContainer = ({ products }: IProps) => {
+const ProductContainer = ({ allProducts }: IProps) => {
   const {
-    allProducts,
+    selectedProducts,
     available,
     setAvailable,
     onAvailable,
     handleSizeChange,
     handleCategoryChange,
-  } = useFilter(products);
+  } = useFilter(allProducts);
 
   const router = useRouter();
   const pathname = usePathname();
@@ -67,9 +67,9 @@ const ProductContainer = ({ products }: IProps) => {
 
       <div className="w-full">
         {layoutType === "grid" ? (
-          <GridProducts filtredProducts={allProducts} />
+          <GridProducts filtredProducts={selectedProducts} />
         ) : (
-          <ListProducts filtredProducts={allProducts} />
+          <ListProducts filtredProducts={selectedProducts} />
         )}
       </div>
     </div>

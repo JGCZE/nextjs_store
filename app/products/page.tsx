@@ -3,12 +3,12 @@ import { getProducts } from "@/utils/actions";
 
 const Products = async ({}) => {
   const response = await getProducts();
-  const products = JSON.parse(JSON.stringify(response));
+  const allProducts = JSON.parse(JSON.stringify(response));
 
-  if (!!products)
+  if (!!allProducts)
     return (
       <section>
-        <ProductContainer products={products} />
+        <ProductContainer allProducts={allProducts} />
       </section>
     );
 };
