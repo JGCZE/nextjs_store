@@ -7,7 +7,6 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
-import { Button } from "../ui/button";
 
 const ItemReviews = async ({ reviewsIds }: { reviewsIds: Array<number> }) => {
   const reviews = await getReviews(reviewsIds);

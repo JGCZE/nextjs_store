@@ -53,11 +53,10 @@ export const getReviews = async (
   reviewsIds: Array<number>
 ): Promise<Array<TReview> | undefined> => {
   const API_URL = process.env.REVIEWS_URL;
-  const limit = 4;
 
   try {
     const queryParams = reviewsIds.map((id) => `id=${id}`).join("&");
-    const response = await fetch(`${API_URL}?limit=${limit}${queryParams}`);
+    const response = await fetch(`${API_URL}?${queryParams}`);
 
     if (!response) {
       throw new Error("NO REVIEWS FOUND");
