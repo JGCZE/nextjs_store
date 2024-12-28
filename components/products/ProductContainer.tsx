@@ -39,7 +39,7 @@ const ProductContainer = ({ allProducts }: IProps) => {
 
   return (
     <div className="flex">
-      <div className="flex flex-col border-r-2 mr-4 border-red-300 mb-10 min-w-80 px-4">
+      <div className="flex flex-col border-r-2 mr-4 border-black mb-10 min-w-72 px-4">
         <Filter
           available={available}
           setAvailable={setAvailable}

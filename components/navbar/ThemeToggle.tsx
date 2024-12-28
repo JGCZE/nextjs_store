@@ -6,7 +6,7 @@ const ThemeToggle = () => {
   const { theme, setTheme } = useTheme();
 
   return (
-    <div className="w-12 h-12 flex justify-center">
+    <div className="w-12 h-12 flex justify-center items-center">
       {theme === "dark" ? (
         <MdLightMode size={32} onClick={() => setTheme("light")} />
       ) : (

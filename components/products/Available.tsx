@@ -8,8 +8,8 @@ interface IProps {
 const Available = ({ available, amount }: IProps) => (
   <>
     {available ? (
-      <span className="flex mt-3 font-bold">
-        <p className="text-green-700 mr-16">skladem</p>
+      <span className="flex font-bold">
+        <p className="text-green-700 mr-2">skladem:</p>
         <p>{resolveStore(amount)}</p>
       </span>
     ) : (

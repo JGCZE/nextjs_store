@@ -11,11 +11,11 @@ export const navigationLinks: Array<TNavLinks> = [
     href: "/products",
     label: "Shop",
   },
-  {
+  /* {
     id: 3,
     href: "/about-us",
     label: "About",
-  },
+  }, */
   {
     id: 4,
     href: "/contact",

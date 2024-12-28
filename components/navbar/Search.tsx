@@ -6,7 +6,7 @@ const NavSearch = () => {
       <Input
         type="search"
         placeholder="Hledej..."
-        className="bg-white w-60 rounded-3xl"
+        className="bg-white w-80 rounded-3xl"
       />
     </div>
   );

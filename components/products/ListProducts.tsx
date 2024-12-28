@@ -20,7 +20,7 @@ const ListProducts = ({ filtredProducts }: IProps) => {
         return (
           <Link href={`/products/${_id}`} key={prod._id}>
             <Card className="flex hover:shadow-lg">
-              <CardContent className="relative h-56 rounded-l-xl overflow-hidden min-w-40 ">
+              <CardContent className="relative  rounded-l-xl overflow-hidden min-w-40 ">
                 <Image src={image} alt="" fill className="object-cover" />
               </CardContent>
               <div>
@@ -37,20 +37,24 @@ const ListProducts = ({ filtredProducts }: IProps) => {
                     {!!sizes &&
                       sizes?.map((size, index) => {
                         return (
-                          <Badge variant="outline" key={index} className="mr-1">
+                          <Badge
+                            variant="outline"
+                            key={index}
+                            className="mr-1 mt-1"
+                          >
                             {size}
                           </Badge>
                         );
                       })}
                   </div>
-                  <div className="font-bold flex flex-col justify-between my-2">
-                    <Available available={available} amount={4} />
-                  </div>
-                  <div className="flex mt-2">
+                  <div className="flex items-center mt-2">
                     <FaStar className="text-yellow-400 text-xl" />
-                    <span className="ml-2 font-bold">
+                    <span className="ml-2 mr-6 font-bold">
                       ( {reviews?.length || "zatím nehodnoceno"} )
                     </span>
+                    <div className="font-bold flex flex-col justify-between ml-2">
+                      <Available available={available} amount={4} />
+                    </div>
                   </div>
                   <p className="text-black font-extrabold text-lg my-4 flex justify-between">
                     {price} Kč

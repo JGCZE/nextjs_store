@@ -14,10 +14,10 @@ const Cart = () => {
   const itemsInCart: number = 3;
   return (
     <HoverCard>
-      <div className="w-24 h-12 flex justify-center relative">
+      <div className="w-12 h-12 flex justify-center items-center relative">
         <HoverCardTrigger>
           {itemsInCart <= 0 ? null : (
-            <div className="rounded-full bg-blue-400 absolute right-4 -top-2 flex justify-center items-center w-6 h-6">
+            <div className="rounded-full bg-violet-400 absolute -right-2 -top-2 flex justify-center items-center w-6 h-6">
               {itemsInCart}
             </div>
           )}
