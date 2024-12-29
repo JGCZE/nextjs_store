@@ -11,7 +11,10 @@ const Login = () => {
           <p>logout</p>
         </Link>
       ) : (
-        <Link href="/" className="flex gap-2 text-violet-900 font-extrabold">
+        <Link
+          href="/login"
+          className="flex gap-2 text-violet-900 font-extrabold"
+        >
           <GrLogin size={26} />
           <p>login </p>
         </Link>
