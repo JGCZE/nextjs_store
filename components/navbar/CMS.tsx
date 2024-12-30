@@ -11,7 +11,7 @@ const CMS = () => {
 
   return (
     <div>
-      <Link href="/cms">CMS</Link>
+      <Link href="/cms">ADMIN</Link>
     </div>
   );
 };

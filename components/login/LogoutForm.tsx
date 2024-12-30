@@ -1,13 +1,19 @@
 import React from "react";
 import { Button } from "../ui/button";
 import { handleLogout } from "@/lib/actions";
+import { auth } from "@/lib/auth";
 
 const LogoutForm = async () => {
+  const session = await auth();
+  const isAdmin: boolean = session?.user?.isAdmin;
+
   return (
     <div className="py-6 px-10">
-      Jsi přihlášený jako,
-      <form action={handleLogout} className="mt-6">
-        <Button>Odhlásit se</Button>
+      <span>
+        Jsi přihlášený jako, {isAdmin ? <b>Admin</b> : <b>Běžný uživatel</b>}
+      </span>
+      <form action={handleLogout} className="mt-6 text-center">
+        <Button className="font-bold">Odhlásit se</Button>
       </form>
     </div>
   );

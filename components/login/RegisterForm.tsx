@@ -7,6 +7,7 @@ import { useActionState } from "react";
 import {
   Dialog,
   DialogContent,
+  DialogClose,
   DialogDescription,
   DialogFooter,
   DialogHeader,
@@ -16,27 +17,27 @@ import {
 import { Button } from "../ui/button";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
+import Link from "next/link";
 
 const RegisterForm = () => {
   const [state, formAction] = useActionState(handleRegister, undefined);
   const router = useRouter();
 
   useEffect(() => {
-    if (state?.succes && router) router.push("/register");
+    if (state?.succes && router) router.push("/login");
   }, [state?.succes, router]);
 
   return (
     <div className="w-60 mx-auto">
-      {state?.succes && <p>Seš zaregistrován</p>}
-      <form action={formAction}>
+      {/* <form action={formAction}>
         <input type="text" placeholder="user name" name="userName" />
         <input type="text" placeholder="email" name="email" />
         <input type="password" placeholder="password" name="password" />
         <button>Register</button>
         {state?.error && <p>errpr</p>}
-      </form>
+      </form> */}
 
-      {/*  <Dialog>
+      <Dialog>
         <DialogTrigger asChild>
           <span className="">
             Ještě nemáš účet?
@@ -53,25 +54,59 @@ const RegisterForm = () => {
               Make changes to your profile here. Click save when you're done.
             </DialogDescription>
           </DialogHeader>
-          <div className="grid gap-4 py-4">
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="name" className="text-right">
-                Uživatelské jméno
-              </Label>
-              <Input id="name" value="Pedro Duarte" className="col-span-3" />
+          <form action={formAction}>
+            <div className="grid gap-4 py-4">
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="name" className="text-right">
+                  Uživatelské jméno
+                </Label>
+                <Input
+                  id="name"
+                  name="userName"
+                  className="col-span-3"
+                  placeholder="jmeno"
+                />
+              </div>
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="email" className="text-right">
+                  E-mail
+                </Label>
+                <Input
+                  name="email"
+                  id="email"
+                  className="col-span-3"
+                  placeholder="@"
+                />
+              </div>
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="password" className="text-right">
+                  Heslo
+                </Label>
+                <Input
+                  name="password"
+                  id="password"
+                  type="password"
+                  className="col-span-3"
+                />
+              </div>
             </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="password" className="text-right">
-                Heslo
-              </Label>
-              <Input id="password" value="" className="col-span-3" />
-            </div>
-          </div>
-          <DialogFooter>
-            <Button type="submit">Save changes</Button>
-          </DialogFooter>
+            <DialogFooter>
+              {state?.succes && (
+                <>
+                  <b className="font-bold text-green-600 text-xl">
+                    Úspěšně ses zaregistroval
+                  </b>
+                  <Button onClick={DialogClose}>
+                    <Link href="/login">Login</Link>
+                  </Button>
+                </>
+              )}
+
+              {!state?.succes && <Button type="submit">Zaregistrovat</Button>}
+            </DialogFooter>
+          </form>
         </DialogContent>
-      </Dialog> */}
+      </Dialog>
       {state?.error && <p>{state.error}</p>}
     </div>
   );

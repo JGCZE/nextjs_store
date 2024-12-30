@@ -106,7 +106,6 @@ export const handleRegister = async (previousState, formData) => {
     });
 
     await newUser.save();
-    console.log("SAVE TO DB", newUser);
 
     return { succes: true };
   } catch (error) {
