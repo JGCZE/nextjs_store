@@ -21,14 +21,12 @@ const RegisterForm = () => {
   const [state, formAction] = useActionState(handleRegister, undefined);
   const router = useRouter();
 
-  console.log("XXX >>", state);
-
   useEffect(() => {
     if (state?.succes && router) router.push("/register");
   }, [state?.succes, router]);
 
   return (
-    <>
+    <div className="w-60 mx-auto">
       {state?.succes && <p>Seš zaregistrován</p>}
       <form action={formAction}>
         <input type="text" placeholder="user name" name="userName" />
@@ -38,9 +36,14 @@ const RegisterForm = () => {
         {state?.error && <p>errpr</p>}
       </form>
 
-      {/* <Dialog>
+      {/*  <Dialog>
         <DialogTrigger asChild>
-          <Button variant="outline">Vytvoři účet</Button>
+          <span className="">
+            Ještě nemáš účet?
+            <span className="ml-2 font-extrabold text-blue-700 underline cursor-pointer">
+              Vytvořit účet
+            </span>
+          </span>
         </DialogTrigger>
 
         <DialogContent className="sm:max-w-[425px]">
@@ -69,7 +72,8 @@ const RegisterForm = () => {
           </DialogFooter>
         </DialogContent>
       </Dialog> */}
-    </>
+      {state?.error && <p>{state.error}</p>}
+    </div>
   );
 };
 

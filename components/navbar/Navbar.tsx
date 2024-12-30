@@ -5,9 +5,11 @@ import Logo from "./Logo";
 import Navigation from "./Navigation";
 import Search from "./Search";
 import ThemeToggle from "./ThemeToggle";
+import CMS from "./CMS";
 
 const Navbar = async () => {
   const session = await auth();
+  console.log("NAVBAR ====>", session);
 
   return (
     <nav className="flex justify-between items-center h-24 max-w-[1280px] xl:pl-0 pl-[2.5vw] pr-6 mx-auto mt-2">
@@ -16,7 +18,7 @@ const Navbar = async () => {
 
       <div className="flex justify-between items-center">
         <Search />
-        {session?.isAdmin && <p>CMS</p>}
+        <CMS />
         <Login />
         <Cart />
         <ThemeToggle />

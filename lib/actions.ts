@@ -119,10 +119,13 @@ export const login = async (previousState, formData) => {
   const { userName, password } = Object.fromEntries(formData);
 
   try {
-    await signIn("credentials", { userName, password });
+    await signIn("credentials", { userName, password, redirect: false });
     return { succes: true };
   } catch (error) {
     console.log(error);
+    if (error.message.includes("CredentialsSignin")) {
+      return { error: "Invalid username or password" };
+    }
     return { error: "SOMETHING WENT WRONG MOTHERFUCKER" };
   }
 };

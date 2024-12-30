@@ -4,9 +4,9 @@ import { handleLogout } from "@/lib/actions";
 
 const LogoutForm = async () => {
   return (
-    <div>
-      LogoutForm
-      <form action={handleLogout}>
+    <div className="py-6 px-10">
+      Jsi přihlášený jako,
+      <form action={handleLogout} className="mt-6">
         <Button>Odhlásit se</Button>
       </form>
     </div>
