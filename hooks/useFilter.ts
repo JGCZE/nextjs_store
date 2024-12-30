@@ -1,4 +1,4 @@
-import { TProducts } from "@/utils/types";
+import { TProducts } from "@/lib/types";
 import { useCallback, useEffect, useState } from "react";
 import { xor } from "lodash";
 

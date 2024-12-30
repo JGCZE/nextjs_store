@@ -1,4 +1,4 @@
-import { navigationLinks } from "@/utils/links";
+import { navigationLinks } from "@/lib/links";
 import Link from "next/link";
 
 const Navigation = async () => {

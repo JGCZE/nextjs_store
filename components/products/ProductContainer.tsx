@@ -1,5 +1,5 @@
 "use client";
-import { TProducts } from "@/utils/types";
+import { TProducts } from "@/lib/types";
 import React, { useCallback, useMemo } from "react";
 import Filter from "./Filter";
 import ListProducts from "./ListProducts";

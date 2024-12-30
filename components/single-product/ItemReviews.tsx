@@ -1,4 +1,3 @@
-import { getReviews } from "@/utils/actions";
 import React from "react";
 import {
   Card,
@@ -7,6 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
+import { getReviews } from "@/lib/actions";
 
 const ItemReviews = async ({ reviewsIds }: { reviewsIds: Array<number> }) => {
   const reviews = await getReviews(reviewsIds);

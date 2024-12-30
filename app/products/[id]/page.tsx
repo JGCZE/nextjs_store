@@ -1,5 +1,5 @@
 import ItemSection from "@/components/single-product/ItemSection";
-import { getItem } from "@/utils/actions";
+import { getItem } from "@/lib/actions";
 
 const page = async ({ params }: { params: { id: string } }) => {
   const itemId = (await params).id;

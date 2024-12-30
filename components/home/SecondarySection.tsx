@@ -1,10 +1,10 @@
-import { getFeaturedProducts } from "@/utils/actions";
 import React from "react";
 import { Card, CardContent } from "../ui/card";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "../ui/button";
-import { discountLinks } from "@/utils/links";
+import { discountLinks } from "@/lib/links";
+import { getFeaturedProducts } from "@/lib/actions";
 
 const SecondarySection = async () => {
   const featuredItem = await getFeaturedProducts();

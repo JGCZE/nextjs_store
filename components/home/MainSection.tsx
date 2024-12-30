@@ -6,7 +6,7 @@ import {
   CarouselPrevious,
 } from "../ui/carousel";
 import { Card, CardContent } from "../ui/card";
-import { heroLinks } from "@/utils/links";
+import { heroLinks } from "@/lib/links";
 import clsx from "clsx";
 import Link from "next/link";
 

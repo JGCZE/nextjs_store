@@ -8,7 +8,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "../ui/accordion";
-import { TCategories } from "@/utils/types";
+import { TCategories } from "@/lib/types";
 
 interface IProps {
   available: boolean;

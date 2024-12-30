@@ -1,5 +1,5 @@
 import ProductContainer from "@/components/products/ProductContainer";
-import { getProducts } from "@/utils/actions";
+import { getProducts } from "@/lib/actions";
 
 const Products = async ({}) => {
   const response = await getProducts();

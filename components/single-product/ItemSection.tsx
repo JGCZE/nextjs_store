@@ -1,4 +1,4 @@
-import { TProducts } from "@/utils/types";
+import { TProducts } from "@/lib/types";
 import BreadCrumbs from "./BreadCrumbs";
 import ItemDescriptions from "./ItemDescriptions";
 import ItemReviews from "./ItemReviews";
