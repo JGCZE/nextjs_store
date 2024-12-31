@@ -17,6 +17,7 @@ const LoginForm = () => {
       router.push("/login");
     }
   }, [state?.succes, router]);
+
   return (
     <div className="py-4 w-60 mx-auto">
       <form action={handleGithubLogin}>
