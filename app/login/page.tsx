@@ -32,8 +32,8 @@ const LoginPage = async () => {
           ponechat položky v košíku neomezeně dlouho. Můžete si vytvořit vlastní
           účet nebo použít testovací pro zkušební účely
         </p>
-        <p>user name: admin</p>
-        <p>heslo: heslo</p>
+        <p>user name: user</p>
+        <p>heslo: user</p>
       </div>
     </div>
   );

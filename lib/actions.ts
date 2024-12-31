@@ -1,8 +1,8 @@
 "use server";
 import { connectToDb } from "@/lib/utils";
-import { Items, UserValues } from "../lib/models";
+import { CustomerCart, Items, UserValues } from "../lib/models";
 import { TProducts, TReview } from "./types";
-import { signIn, signOut } from "./auth";
+import { auth, signIn, signOut } from "./auth";
 import bcrypt from "bcryptjs";
 
 export const getProducts = async (): Promise<Array<TProducts>> => {
@@ -126,5 +126,49 @@ export const login = async (previousState, formData) => {
       return { error: "Invalid username or password" };
     }
     return { error: "SOMETHING WENT WRONG MOTHERFUCKER" };
+  }
+};
+
+export const handleAddToCart = async (_id: string) => {
+  const session = await auth();
+  const { email } = session?.user;
+
+  if (!email) {
+    // ošetřit nepřihlášené uživatele
+    return undefined;
+  }
+
+  if (email) {
+    connectToDb();
+
+    const customerAlreadyExist = await CustomerCart.findOne({
+      userEmail: email,
+    });
+
+    if (!!customerAlreadyExist) {
+      // Získání čistého JS objektu z dokumentu
+      const customerData = { ...customerAlreadyExist._doc };
+
+      // Přidání nového productId
+      const newProductId = _id;
+      const updatedProductId = [...customerData.productId, newProductId];
+
+      // Aktualizace existujícího dokumentu v databázi
+      await CustomerCart.updateOne(
+        { userEmail: email },
+        { productId: updatedProductId }
+      );
+      console.log("cart updated");
+    }
+
+    if (!customerAlreadyExist && email) {
+      //console.log("XXXX 01");
+      const newPurchase = new CustomerCart({
+        productId: [_id],
+        userEmail: email,
+      });
+      await newPurchase.save();
+      console.log("NEW PURCHASE", newPurchase);
+    }
   }
 };

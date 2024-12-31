@@ -7,6 +7,7 @@ import Link from "next/link";
 import Available from "./Available";
 import { FaStar } from "react-icons/fa";
 import { Badge } from "../ui/badge";
+import { handleAddToCart } from "@/lib/actions";
 
 interface IProps {
   filtredProducts: Array<TProducts>;
@@ -58,7 +59,10 @@ const ListProducts = ({ filtredProducts }: IProps) => {
                   </div>
                   <p className="text-black font-extrabold text-lg my-4 flex justify-between">
                     {price} Kč
-                    <Button>Add to cart</Button>
+                    <Button onClick={() => handleAddToCart(_id)}>
+                      Do košíku
+                    </Button>
+                    ;
                   </p>
                 </CardDescription>
               </div>

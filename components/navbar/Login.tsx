@@ -4,7 +4,6 @@ import { GrLogin, GrLogout } from "react-icons/gr";
 
 const Login = async () => {
   const session = await auth();
-  console.log("AAA", session);
 
   return (
     <div className="ml-4 w-24 h-12 flex justify-center items-center">

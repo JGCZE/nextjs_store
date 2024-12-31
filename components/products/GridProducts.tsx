@@ -6,6 +6,7 @@ import { Button } from "../ui/button";
 import Available from "./Available";
 import { FaStar } from "react-icons/fa";
 import { Badge } from "../ui/badge";
+import { handleAddToCart } from "@/lib/actions";
 
 interface IProps {
   filtredProducts: Array<TProducts>;
@@ -15,9 +16,9 @@ const GridProducts = ({ filtredProducts }: IProps) => {
   return (
     <div className="grid 2xl:grid-cols-4 xl:grid-cols-3 grid-cols-2 gap-4">
       {filtredProducts.map((prod) => {
-        const { available, image, price, itemName, reviews, sizes } = prod;
+        const { available, image, price, itemName, reviews, sizes, _id } = prod;
         return (
-          <Card key={prod._id} className="max-w-60 hover:shadow-lg">
+          <Card key={_id} className="max-w-60 hover:shadow-lg">
             <CardContent className="relative h-72 rounded-t-xl overflow-hidden min-w-60 ">
               <Image src={image} alt="" fill className="object-cover" />
             </CardContent>
@@ -50,7 +51,7 @@ const GridProducts = ({ filtredProducts }: IProps) => {
               </div>
               <p className="text-black font-extrabold text-lg my-4 flex justify-between">
                 {price} Kč
-                <Button>Add to cart</Button>
+                <Button onClick={() => handleAddToCart(_id)}>Do košíku</Button>;
               </p>
             </CardDescription>
           </Card>

@@ -8,10 +8,12 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "../ui/hover-card";
+import { useRouter } from "next/navigation";
 
 const Cart = () => {
   const [isOpen, setIsOpen] = useState(false);
   const itemsInCart: number = 3;
+  const router = useRouter();
   return (
     <HoverCard>
       <div className="w-12 h-12 flex justify-center items-center relative">
@@ -24,7 +26,10 @@ const Cart = () => {
           <GrCart
             size={26}
             className="mx-4 cursor-pointer z-10"
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={() => {
+              setIsOpen(!isOpen);
+              router.push("/cart");
+            }}
           />
         </HoverCardTrigger>
         <HoverCardContent>
@@ -33,7 +38,6 @@ const Cart = () => {
             <p>Obrazek množství odebrat</p>
             <p>Obrazek množství odebrat</p>
           </div>
-
           <Link href="/cart" className="mt-8 mb-4">
             <Button onClick={() => setIsOpen(false)}>Do košíku</Button>
           </Link>
